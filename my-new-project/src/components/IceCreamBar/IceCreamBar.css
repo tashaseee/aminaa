@@ -1,0 +1,343 @@
+.ice-cream-bar.ice-cream-catalog {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ice-cream-bar .catalog-section {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.ice-cream-bar .section-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ice-cream-bar .section-header h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.ice-cream-bar .section-header p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.ice-cream-bar .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ice-cream-bar .product-card {
+    width: 250px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+.ice-cream-bar .product-card:hover {
+    transform: translateY(-5px);
+}
+
+.ice-cream-bar .new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f28c38;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.ice-cream-bar .wishlist-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: #444;
+    z-index: 1;
+}
+
+.ice-cream-bar .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.ice-cream-bar .product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.ice-cream-bar .product-info h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+    min-height: 40px;
+}
+
+.ice-cream-bar .product-info p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    height: 36px;
+    overflow: hidden;
+}
+
+.ice-cream-bar .product-rating {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.ice-cream-bar .product-rating span {
+    color: #f8ce0b;
+}
+
+.ice-cream-bar .product-price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ice-cream-bar .price {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 16px;
+}
+
+.ice-cream-bar .add-to-cart-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ice-cream-bar .add-to-cart-btn:hover {
+    background-color: #5341d6;
+}
+
+.ice-cream-bar .add-to-cart-btn.added-to-cart {
+    background-color: #4CAF50;
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.ice-cream-bar .product-card:hover .add-to-cart-btn {
+    animation: pulse 1s infinite;
+}
+
+.ice-cream-bar .order-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ice-cream-bar .order-swiggy, .ice-cream-bar .order-zomato {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ice-cream-bar .order-swiggy {
+    background-color: #fc8019;
+    color: white;
+}
+
+.ice-cream-bar .order-swiggy:hover {
+    background-color: #e07017;
+}
+
+.ice-cream-bar .order-zomato {
+    background-color: #ef4f5f;
+    color: white;
+}
+
+.ice-cream-bar .order-zomato:hover {
+    background-color: #d94554;
+}
+
+/* Modal styles */
+.ice-cream-bar .product-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.ice-cream-bar .product-modal {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ice-cream-bar .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.ice-cream-bar .modal-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.ice-cream-bar .modal-image-container {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.ice-cream-bar .modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.ice-cream-bar .modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ice-cream-bar .modal-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.ice-cream-bar .modal-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.ice-cream-bar .modal-rating {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.ice-cream-bar .modal-rating span {
+    color: #f8ce0b;
+}
+
+.ice-cream-bar .modal-price {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.ice-cream-bar .add-to-cart-modal {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.ice-cream-bar .add-to-cart-modal:hover {
+    background-color: #5341d6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ice-cream-bar .product-card {
+        width: 200px;
+    }
+    
+    .ice-cream-bar .modal-content {
+        flex-direction: column;
+    }
+    
+    .ice-cream-bar .modal-image-container {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ice-cream-bar .product-card {
+        width: 160px;
+    }
+}

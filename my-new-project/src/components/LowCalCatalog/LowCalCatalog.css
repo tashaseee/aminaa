@@ -1,0 +1,352 @@
+.low-cal.ice-cream-catalog {
+    width: auto;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    justify-items: center;
+}
+
+.catalog-section {
+    margin-bottom: 40px;
+}
+
+.section-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.section-header p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.arrow {
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.products-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.products-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+.product-card {
+    flex: 0 0 auto;
+    width: 250px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f28c38;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: #444;
+    z-index: 1;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-info h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+    min-height: 40px;
+}
+
+.product-info p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    height: 36px;
+    overflow: hidden;
+}
+
+.product-rating {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.product-rating span {
+    color: #f8ce0b;
+}
+
+.product-price-cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 16px;
+}
+
+.add-to-cart-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #5341d6;
+}
+
+.add-to-cart-btn.added-to-cart {
+    background-color: #4CAF50;
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.product-card:hover .add-to-cart-btn {
+    animation: pulse 1s infinite;
+}
+
+.order-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.order-swiggy, .order-zomato {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-swiggy {
+    background-color: #fc8019;
+    color: white;
+}
+
+.order-swiggy:hover {
+    background-color: #e07017;
+}
+
+.order-zomato {
+    background-color: #ef4f5f;
+    color: white;
+}
+
+.order-zomato:hover {
+    background-color: #d94554;
+}
+
+/* Modal styles */
+.product-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.product-modal {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-image-container {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.modal-rating {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.modal-rating span {
+    color: #f8ce0b;
+}
+
+.modal-price {
+    font-weight: bold;
+    color: #ff6b6b;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.add-to-cart-modal {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-modal:hover {
+    background-color: #5341d6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-card {
+        width: 200px;
+    }
+    
+    .modal-content {
+        flex-direction: column;
+    }
+    
+    .modal-image-container {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        width: 160px;
+    }
+}

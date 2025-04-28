@@ -1,0 +1,368 @@
+/* Обновленные переменные цветов */
+:root {
+    --noto-primary: #FF4A9D;
+    --noto-light: #FFFFFF;
+    --noto-pastel: #FFF0F5;
+    --noto-secondary: #FF99C8;
+    --noto-dark: #2D1B2A;
+    --noto-gradient: linear-gradient(135deg, var(--noto-primary), var(--noto-secondary));
+  }
+  
+  /* Обновленный контейнер профиля */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    background: var(--noto-pastel);
+    background-image: url('../../assets/sprinkles-pattern.png');
+    background-size: 100px;
+    background-repeat: repeat;
+  }
+  
+  /* Улучшенные боковые панели */
+  .side-panel {
+    position: fixed;
+    top: 0;
+    width: 120px;
+    height: 100vh;
+    background: var(--noto-gradient);
+    opacity: 0.2;
+    z-index: 0;
+    animation: drip 8s linear infinite;
+  }
+  
+  /* Обновленный основной контент */
+  .profile-content {
+    background: var(--noto-light);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 74, 157, 0.2);
+    max-width: 1400px;
+    width: 95%;
+    text-align: center;
+    animation: slideIn 0.5s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Обновленный заголовок профиля */
+  .profile-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--noto-primary);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-title:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--noto-secondary);
+    border-radius: 3px;
+  }
+  
+  .profile-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: var(--noto-dark);
+    margin-bottom: 30px;
+  }
+  
+  /* Улучшенная сетка профиля */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  /* Улучшенные карточки */
+  .profile-card {
+    background: var(--noto-light);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 153, 200, 0.2);
+  }
+  
+  .profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 74, 157, 0.15);
+  }
+  
+  /* Улучшенный аватар */
+  .avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .user-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--noto-secondary);
+    transition: transform 0.3s ease;
+    animation: glow 3s infinite;
+  }
+  
+  .user-avatar:hover {
+    transform: scale(1.05);
+  }
+  
+  .change-avatar-button {
+    background: var(--noto-gradient);
+    color: var(--noto-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .change-avatar-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 74, 157, 0.3);
+  }
+  
+  /* Улучшенная форма */
+  .user-form {
+    display: grid;
+    gap: 15px;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(255, 153, 200, 0.3);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: var(--noto-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--noto-primary);
+    box-shadow: 0 0 8px rgba(255, 74, 157, 0.25);
+  }
+  
+  /* Улучшенная карта */
+  .map-container {
+    margin: 20px 0;
+  }
+  
+  .map-placeholder {
+    height: 120px;
+    background: var(--noto-pastel);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: var(--noto-dark);
+    border: 2px dashed var(--noto-secondary);
+    transition: transform 0.3s ease;
+  }
+  
+  .map-placeholder span {
+    font-size: 30px;
+    margin-right: 10px;
+  }
+  
+  /* Улучшенная кнопка сохранения */
+  .update-button {
+    background: var(--noto-gradient);
+    color: var(--noto-light);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+  }
+  
+  .update-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 74, 157, 0.3);
+  }
+  
+  /* Улучшенная история заказов */
+  .order-history-section {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .orders-list {
+    display: grid;
+    gap: 15px;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+  
+  .orders-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .orders-list::-webkit-scrollbar-thumb {
+    background: var(--noto-secondary);
+    border-radius: 3px;
+  }
+  
+  .order-card {
+    background: var(--noto-pastel);
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 153, 200, 0.3);
+  }
+  
+  .order-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--noto-dark);
+    margin-bottom: 10px;
+  }
+  
+  .order-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    color: var(--noto-dark);
+    margin-bottom: 10px;
+  }
+  
+  .order-item {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  
+  .order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .reorder-button {
+    background: var(--noto-primary);
+    color: var(--noto-light);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .reorder-button:hover {
+    background: var(--noto-secondary);
+    transform: translateY(-2px);
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 1200px) {
+    .profile-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .order-history-section {
+      grid-column: span 2;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-content {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    .profile-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .side-panel {
+      width: 60px;
+    }
+  
+    .profile-title {
+      font-size: 24px;
+    }
+  
+    .profile-subtitle {
+      font-size: 14px;
+    }
+  
+    .user-avatar {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-container {
+      padding: 10px;
+    }
+  
+    .profile-content {
+      padding: 15px;
+      width: 95%;
+    }
+  
+    .profile-title {
+      font-size: 20px;
+    }
+  
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  
+    .side-panel {
+      width: 30px;
+    }
+  }
