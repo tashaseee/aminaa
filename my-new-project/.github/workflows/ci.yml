@@ -18,21 +18,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          path: .  # Указываем, что клонировать репозиторий в текущую директорию
+
+      - name: List files in the repository
+        run: ls -alh  # Смотрим, какие файлы в корне репозитория
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Обновлено до более новой версии Node.js
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+        working-directory: ./  # Указываем рабочую директорию для установки зависимостей
 
       - name: Build project
         run: npm run build
+        working-directory: ./  # Указываем рабочую директорию для сборки проекта
         env:
-          CI: false # Отключаем строгие проверки для Vite
+          CI: false  # Отключаем строгие проверки для Vite
 
       - name: Save version
         id: version
@@ -63,10 +68,10 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            scotttish/artjobs:${{ steps.version.outputs.tag }}
-            scotttish/artjobs:latest
-          cache-from: type=registry,ref=scotttish/artjobs:cache
-          cache-to: type=registry,ref=scotttish/artjobs:cache,mode=max
+            tashaseeee/artjobs:${{ steps.version.outputs.tag }}
+            tashaseeee/artjobs:latest
+          cache-from: type=registry,ref=tashaseeee/artjobs:cache
+          cache-to: type=registry,ref=tashaseeee/artjobs:cache,mode=max
 
       - name: Update version
         if: github.event_name == 'push' # Обновляем версию только на push
