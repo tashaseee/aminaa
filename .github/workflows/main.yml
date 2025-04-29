@@ -63,10 +63,10 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            scotttish/artjobs:${{ steps.version.outputs.tag }}
-            scotttish/artjobs:latest
-          cache-from: type=registry,ref=scotttish/artjobs:cache
-          cache-to: type=registry,ref=scotttish/artjobs:cache,mode=max
+            tashaseeee/artjobs:${{ steps.version.outputs.tag }}
+            tashaseeee/artjobs:latest
+          cache-from: type=registry,ref=tashaseeee/artjobs:cache
+          cache-to: type=registry,ref=tashaseeee/artjobs:cache,mode=max
 
       - name: Update version
         if: github.event_name == 'push' # Обновляем версию только на push
