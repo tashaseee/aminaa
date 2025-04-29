@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://tashaseee.github.io/aminaa/",  // Это правильный формат для GitHub Pages
+  "homepage": "https://tashaseee.github.io/aminaa/",  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
