@@ -233,6 +233,23 @@ def upload_avatar():
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg'}
+@app.route('/api/orders', methods=['GET'])
+@login_required
+def get_orders():
+    try:
+        if current_user.role == 'admin':
+            orders = Order.query.all()  # Админы видят все заказы
+        else:
+            orders = Order.query.filter_by(user_id=current_user.id).all()  # Обычные пользователи видят свои заказы
+        response = jsonify({
+            'orders': [order.to_dict() for order in orders]
+        })
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5181')
+        return response, 200
+    except Exception as e:
+        print(f"Error fetching orders: {str(e)}")
+        return jsonify({'error': str(e)}), 500
 
 # Эндпоинт для получения заказов
 @app.route('/api/orders', methods=['GET'])
@@ -282,6 +299,50 @@ def create_order():
         return response, 201
     except Exception as e:
         print(f"Error creating order: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+    
+    # Добавьте этот эндпоинт для обновления статуса заказа
+@app.route('/api/orders/<int:order_id>', methods=['PUT'])
+@login_required
+def update_order(order_id):
+    try:
+        data = request.get_json()
+        order = Order.query.get_or_404(order_id)
+        
+        if 'status' in data:
+            order.status = data['status']
+        
+        db.session.commit()
+        
+        response = jsonify({
+            'message': 'Order updated successfully',
+            'order': order.to_dict()
+        })
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5181')
+        return response, 200
+    except Exception as e:
+        print(f"Error updating order: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+# Обновите эндпоинт для получения заказов (уберите дубликат)
+@app.route('/api/orders', methods=['GET'])
+@login_required
+def get_orders():
+    try:
+        if current_user.role == 'admin':
+            orders = Order.query.all()
+        else:
+            orders = Order.query.filter_by(user_id=current_user.id).all()
+            
+        response = jsonify({
+            'orders': [order.to_dict() for order in orders]
+        })
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5181')
+        return response, 200
+    except Exception as e:
+        print(f"Error fetching orders: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
 # Обработка неавторизованных запросов

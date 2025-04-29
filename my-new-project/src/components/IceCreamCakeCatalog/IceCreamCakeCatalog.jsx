@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../CartContext/CartContext";
 import "./IceCreamCakeCatalog.css";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 const IceCreamCakeCatalog = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -85,7 +83,6 @@ const IceCreamCakeCatalog = () => {
 
   return (
     <div>
-      <Header />
       <div className="ice-cream-cake ice-cream-catalog">
         <div id="ice-cream-cake-section" className="catalog-section section-1">
           <div className="section-header">
@@ -196,7 +193,6 @@ const IceCreamCakeCatalog = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

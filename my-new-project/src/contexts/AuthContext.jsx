@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // User object, e.g., { id, name, email, role }
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,9 +12,12 @@ export const AuthProvider = ({ children }) => {
     const checkAuthStatus = async () => {
       try {
         const storedUser = localStorage.getItem('user');
-        
+
         if (storedUser) {
-          // User data in localStorage, validate with backend
+          // Parse stored user data
+          const parsedUser = JSON.parse(storedUser);
+          
+          // Validate session with backend (adjust endpoint as needed)
           try {
             const response = await fetch('/api/user', {
               method: 'GET',
@@ -23,8 +26,14 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
               const data = await response.json();
-              setUser(data.user);
+              // Ensure role is included; default to 'user' if not provided
+              const validatedUser = {
+                ...data.user,
+                role: data.user.role || 'user',
+              };
+              setUser(validatedUser);
               setIsAuthenticated(true);
+              localStorage.setItem('user', JSON.stringify(validatedUser));
             } else {
               // Session expired or invalid
               localStorage.removeItem('user');
@@ -35,6 +44,7 @@ export const AuthProvider = ({ children }) => {
             console.error('Auth validation error:', error);
             setIsAuthenticated(false);
             setUser(null);
+            localStorage.removeItem('user');
           }
         } else {
           setIsAuthenticated(false);
@@ -44,18 +54,33 @@ export const AuthProvider = ({ children }) => {
         setIsLoading(false);
       }
     };
+    const login = (userData) => {
+      const validatedUser = {
+        ...userData,
+        role: userData.role || 'user',
+      };
+      localStorage.setItem('user', JSON.stringify(validatedUser));
+      setUser(validatedUser);
+      setIsAuthenticated(true);
+    };
 
     checkAuthStatus();
   }, []);
 
   const login = (userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
+    // Ensure role is included; default to 'user' if not provided
+    const validatedUser = {
+      ...userData,
+      role: userData.role || 'user',
+    };
+    localStorage.setItem('user', JSON.stringify(validatedUser));
+    setUser(validatedUser);
     setIsAuthenticated(true);
   };
 
   const logout = async () => {
     try {
+      // Call logout endpoint (adjust as needed)
       await fetch('/api/logout', {
         method: 'POST',
         credentials: 'include',

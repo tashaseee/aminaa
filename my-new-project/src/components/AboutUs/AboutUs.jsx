@@ -26,12 +26,12 @@ const AboutUs = () => {
 
   // Партнеры (без Disney, так как он выделен отдельно)
   const partners = [
-    '/partners/danone.png',
-    '/partners/ferrero.png',
-    '/partners/kraft-heinz.png',
-    '/partners/walmart.png',
-    '/partners/amazon.png',
-    '/partners/general-mills.png'
+    '/p1.png',
+    '/p2.png',
+    '/p3.png',
+    '/p4.png',
+    '/p5.png',
+    '/p6.png'
   ];
 
   // Автопереключение баннеров

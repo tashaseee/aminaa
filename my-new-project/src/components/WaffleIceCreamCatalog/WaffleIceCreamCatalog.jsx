@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../CartContext/CartContext"; // Путь к CartContext правильный
 import "./WaffleIceCreamCatalog.css"; // Локальный файл стилей
-import Header from "../Header/Header"; // Исправленный путь
-import Footer from "../Footer/Footer"; // Исправленный путь
 
 const WaffleIceCreamCatalog = () => {
   const [selectedProduct, setSelectedProduct] = useState(null); // Состояние для выбранного продукта
@@ -110,7 +108,6 @@ const WaffleIceCreamCatalog = () => {
 
   return (
     <div>
-      <Header />
       <div className="waffle ice-cream-catalog">
         <div id="waffle-section" className="catalog-section section-1">
           <div className="section-header">
@@ -221,7 +218,6 @@ const WaffleIceCreamCatalog = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

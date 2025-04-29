@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import json
 
-# Initialize SQLAlchemy instance
 db = SQLAlchemy()
 
 class User(db.Model, UserMixin):
@@ -23,6 +22,7 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(20))
     city = db.Column(db.String(100))
     postal_code = db.Column(db.String(10))
+    role = db.Column(db.String(20), default='user')  # Новое поле role
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -43,7 +43,8 @@ class User(db.Model, UserMixin):
             'city': self.city,
             'postal_code': self.postal_code,
             'created_at': self.created_at.isoformat(),
-            'is_active': self.is_active
+            'is_active': self.is_active,
+            'role': self.role  # Добавляем role в ответ
         }
 
 class Order(db.Model):
@@ -55,7 +56,7 @@ class Order(db.Model):
     total_amount = db.Column(db.Float, nullable=False)
     payment_method = db.Column(db.String(50), nullable=False)
     status = db.Column(db.String(50), nullable=False)
-    items = db.Column(db.Text)  # JSON string for items list
+    items = db.Column(db.Text)
     
     user = db.relationship('User', backref=db.backref('orders', lazy=True))
     

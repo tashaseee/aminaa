@@ -34,7 +34,6 @@ const Header = () => {
     setIsCartOpen(true);
   };
 
-  // Список категорий для выпадающего меню
   const categories = [
     { name: 'Вафельное мороженое', path: '/waffle-catalog' },
     { name: 'Эскимо', path: '/ice-cream-bars-catalog' },
@@ -53,7 +52,7 @@ const Header = () => {
         <div className="header__logo">NOTO</div>
 
         <nav className="header__nav">
-          {['Главная', 'Каталог', 'О нас', 'Филиалы', 'Личный кабинет'].map((item) => (
+          {['Главная', 'Каталог', 'О нас', 'Для сотрудников', 'Личный кабинет'].map((item) => (
             <div
               key={item}
               className="header__link-wrapper"
@@ -106,13 +105,13 @@ const Header = () => {
                   <span className="link__underline"></span>
                 </Link>
               ) : (
-                <a
-                  href="#филиалы"
+                <Link
+                  to="/employee-experience"
                   className={`header__link ${hoveredItem === item ? 'hovered' : ''}`}
                 >
                   {item}
                   <span className="link__underline"></span>
-                </a>
+                </Link>
               )}
             </div>
           ))}

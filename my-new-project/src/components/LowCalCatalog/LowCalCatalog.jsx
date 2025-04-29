@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useCart } from "../CartContext/CartContext";
 import "./LowCalCatalog.css";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 const PopsiclesCatalog = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -172,7 +170,6 @@ const PopsiclesCatalog = () => {
 
   return (
     <div>
-      <Header />
       <div className="popsicles ice-cream-catalog">
         <div id="popsicles-section" className="catalog-section section-1">
           <div className="section-header">
@@ -280,7 +277,6 @@ const PopsiclesCatalog = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

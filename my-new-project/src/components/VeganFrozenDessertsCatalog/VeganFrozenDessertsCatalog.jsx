@@ -105,7 +105,6 @@ const VeganFrozenDessertsCatalog = () => {
 
   return (
     <div>
-      <Header />
       <div className="vegan-frozen-desserts ice-cream-catalog">
         <div id="vegan-frozen-desserts-section" className="catalog-section section-1">
           <div className="section-header">
@@ -216,7 +215,6 @@ const VeganFrozenDessertsCatalog = () => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 };
