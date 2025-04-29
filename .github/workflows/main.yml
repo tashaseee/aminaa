@@ -18,8 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-         path: .
-
+          path: .  # Клонируем репозиторий в текущую директорию
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
