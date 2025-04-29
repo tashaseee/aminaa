@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  base: "/aminaa/"
   server: {
     assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg'],
     port: 5181,
